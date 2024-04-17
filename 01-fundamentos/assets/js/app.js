@@ -1,15 +1,19 @@
 // console.log(console.log('Hola mundo'));
 // alert('Hola desde app.js');
 // VARIABLES
-
+// console.log(miNuevoNombre + ' Mueses')
 let a = 10,
     b = 20,
     c = 'Hola ',
     d = 'Spiderman',
     x = a + b;
 const saludo = c + d;
+
 c = 'Hola de nuevo';
-var miNombre = 'Jhon'
+
+let miNuevoNombre = 'Jhon Jairo'
+// var outerWidth = 1000000; // remplazar objetos propios de windows
+// var outerHeight = 800;
 // console.log('%c Mis variables', 'color:blue; font-weight:bold');
 // console.log( x );
 // console.warn( x );
