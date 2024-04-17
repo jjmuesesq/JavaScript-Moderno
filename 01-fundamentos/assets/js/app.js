@@ -1,5 +1,5 @@
 // console.log(console.log('Hola mundo'));
-
+// alert('Hola desde app.js');
 // VARIABLES
 
 let a = 10,
@@ -9,11 +9,12 @@ let a = 10,
     x = a + b;
 const saludo = c + d;
 c = 'Hola de nuevo';
-console.log('%c Mis variables', 'color:blue; font-weight:bold');
-console.log( x );
-console.warn( x );
-console.error( x );
-console.info( x );
+var miNombre = 'Jhon'
+// console.log('%c Mis variables', 'color:blue; font-weight:bold');
+// console.log( x );
+// console.warn( x );
+// console.error( x );
+// console.info( x );
 
 // console.log( 'a', a );
 // console.log( 'b', b );
