@@ -8,21 +8,22 @@ let a = 10,
     d = 'Spiderman',
     x = a + b;
 const saludo = c + d;
+c = 'Hola de nuevo';
 console.log('%c Mis variables', 'color:blue; font-weight:bold');
 console.log( x );
 console.warn( x );
 console.error( x );
 console.info( x );
 
-console.log( 'a', a );
-console.log( 'b', b );
-console.log( 'c', c );
+// console.log( 'a', a );
+// console.log( 'b', b );
+// console.log( 'c', c );
 
-console.log( {a} );
-console.log( {b} );
-console.log( {c} );
+// console.log( {a} );
+// console.log( {b} );
+// console.log( {c} );
 
-console.table({a, b, c, d, x})
+// console.table({a, b, c, d, x})
 
 //var b = 10; // forma antigua de crear variables
 // const c = 10;
