@@ -30,3 +30,13 @@ console.log( regresaTrue() || regresaFalse() );
 console.log('4 condiciones', true || true || true || false);
 
 console.warn('Asignaciones');
+const soyundefined = undefined;
+const soyNull = null;
+const soyFalso = false;
+
+const a1 = false && 'hola mundo' && 150;
+const a2 = 'hola' && 'mundo' && soyFalso;
+const a3 = soyFalso || 'ya no soy falso';
+const a4 = soyFalso || soyundefined || soyNull || 'ya no soy falso de nuevo' || true;
+const a5 = soyFalso || soyundefined || regresaTrue() || 'ya no soy falso de nuevo' || true;
+console.log({ a1, a2, a3, a4, a5 });
