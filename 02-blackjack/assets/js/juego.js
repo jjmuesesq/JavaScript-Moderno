@@ -51,3 +51,14 @@ const valorCarta = ( carta ) => {
 
 const valor = valorCarta(pedirCarta());
 console.log({ valor });
+
+// document.querySelector('#computadora-cartas');
+// document.getElementById('computadora-cartas');
+// document.querySelector('small').innerHTML= '<b>Hola mundo</>'
+// document.querySelector('small').innerText = 10
+// document.querySelector('.carta');
+// document.querySelectorAll('.carta');
+// document.getElementsByClassName('carta');
+// document.querySelector('header').innerText = 'Jhon';
+// const titulo = document.querySelector('.titulo');
+// titulo.innerText = 'Hola mundo';
