@@ -62,3 +62,14 @@ console.log({ valor });
 // document.querySelector('header').innerText = 'Jhon';
 // const titulo = document.querySelector('.titulo');
 // titulo.innerText = 'Hola mundo';
+
+// const divBotones = document.querySelector('#divBotones');
+// document.createElement('button');
+// const botonNuevo = document.createElement('button');
+// divBotones.append( botonNuevo );
+// botonNuevo.innerText = 'Destruir el mundo';
+// botonNuevo.classList.add('btn-success');
+// const input = document.createElement('input');
+// document.body.append( input );
+// input.classList.add('form-control');
+// input.placeholder = 'Hola mundo';
