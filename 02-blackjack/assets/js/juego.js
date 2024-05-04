@@ -14,6 +14,7 @@ let puntosComputadora = 0;
 //Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
 const btnDetener = document.querySelector('#btnDetener');
+const btnNuevo = document.querySelector('#btnNuevo');
 const divCartasJugador = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadora-cartas');
 const puntosHTML = document.querySelectorAll('small');
@@ -23,17 +24,18 @@ const puntosHTML = document.querySelectorAll('small');
 const crearDeck = () => {
     for( let i = 2; i <= 10; i++ ){
         for( let tipo of tipos){
-            deck.push(i + tipo )
+            deck.push( i + tipo )
         }
     }
     for( let tipo of tipos ){
         for( let esp of especiales){
-            deck.push(esp + tipo )
+            deck.push( esp + tipo )
         }
     }
     //console.log( deck );
     deck = _.shuffle( deck);
     console.log( deck );
+    return deck;
 }
 
 crearDeck();
@@ -72,6 +74,18 @@ const turnoComputadora = ( puntosMinimos ) => {
             break;
         }
     } while (( puntosComputadora < puntosMinimos ) && ( puntosMinimos <= 21 ) );
+
+    setTimeout(() => {
+        if( puntosComputadora === puntosMinimos ) {
+            alert('Nadie gana :(');
+        } else if ( puntosMinimos > 21 ) {
+            alert('Computadora gana');
+        } else if ( puntosComputadora > 21 ) {
+            alert('Jugador gana');
+        } else {
+            alert('Computadora gana');
+        }
+    }, 10);
 }
 
 // Eventos
@@ -101,6 +115,24 @@ btnDetener.addEventListener( 'click', () => {
     btnPedir.disabled = true;
     btnDetener.disabled = true;
     turnoComputadora(puntosJugador);
+});
+
+btnNuevo.addEventListener( 'click', () => {
+    console.clear();
+    deck = [];
+    deck = crearDeck();
+
+    puntosJugador     = 0;
+    puntosComputadora = 0;
+
+    puntosHTML[0].innerText = 0;
+    puntosHTML[1].innerText = 0;
+
+    divCartasComputadora.innerHTML = '';
+    divCartasJugador.innerHTML = '';
+
+    btnPedir.disabled   = false;
+    btnDetener.disabled = false;
 });
 
 // console.log(16);
