@@ -1,7 +1,5 @@
 import _ from 'underscore';
-import { crearDeck } from './usecases/crear-deck'
-import { pedirCarta } from './usecases/pedir-carta';
-import { valorCarta } from './usecases/valor-carta';
+import { crearDeck, pedirCarta, valorCarta } from './usecases';
 // import crearDeck from './usecases/crear-deck';
 // import { crearDeck as crearNuevoDeck } from './usecases/crear-deck'
 
