@@ -4,6 +4,7 @@ import { renderTodos } from './use-cases';
 
 const ElementIDs = {
     TodoList: '.todo-list',
+    NewTodoInput: '#new-todo-input',
 }
 
 /**
@@ -19,6 +20,7 @@ export const App = ( elmentId ) => {
         renderTodos( ElementIDs.TodoList, todos );
         
     }
+
     //Funcion anonima autoinvocada. Cuando la función App se llama. elemento donde voy a renderizar la aplicacion
     (()=>{
         const app = document.createElement('div');
@@ -27,4 +29,17 @@ export const App = ( elmentId ) => {
         displayTodos();
     })();
 
+    //Referencias HTML
+    const newDescriptionInput = document.querySelector(ElementIDs.NewTodoInput);
+
+    //Listeners
+    newDescriptionInput.addEventListener('keyup', (event) => {
+        if( event.keyCode !== 13 ) return;
+        if( event.target.value.trim().length === 0 ) return;
+
+        todoStore.addTodo(event.target.value);
+        displayTodos();
+        event.target.value = '';
+
+    });
 }
