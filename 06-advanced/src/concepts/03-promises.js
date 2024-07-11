@@ -1,12 +1,26 @@
+import { heroes } from '../data/heroes';
+
 /**
  * 
  * @param {HTMLDivElement} element 
  */
 
-import { heroes } from "../data/heroes";
-
 export const promiseComponent = (element) => {
-    console.log('promiseComponen');
+    const renderHero = (hero) => {
+        element.innerHTML = hero.name;
+    }
+
+    const renderError = (error) => {
+        element.innerHTML = `
+        <h1>Error: </h1>
+        <h3>${error}</h3>`;
+    }
+
+    const id1 = '5d86371f25a058e5b1c8a65e';
+    findHero(id1)
+        // .then( superHero => renderHero(superHero));
+        .then( renderHero )
+        .catch( renderError );
 }
 
 
