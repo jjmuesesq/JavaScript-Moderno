@@ -24,18 +24,41 @@ export const promiseComponent = (element) => {
     }
 
     const id1 = '5d86371f25a058e5b1c8a65e';
-    const id2 = '5d86371fd55e2e2a30fe1ccb11';
+    const id2 = '5d86371fd55e2e2a30fe1ccb1';
+    //=====================================================
+    //promise.all
+    Promise.all([ // promesas que no dependen de los resultados entre si (deben ser independientes)
+        findHero(id1),
+        findHero(id2), 
+    ]).then( ([hero1, hero2]) => renderTwoHeros(hero1, hero2)) //desestructurar el resultado de las promesas como argumentos
+    .catch( renderError );
 
-    findHero(id1)
-        // .then( superHero => renderHero(superHero));
-        .then( (hero1) => { // promise hell
-            findHero(id2)
-                .then( hero2 => {
-                    renderTwoHeros(hero1, hero2)
-                })
-                .catch( renderError );
-        })
-        .catch( renderError );
+
+    //=====================================================
+    //forma 2
+
+    // let hero1;
+    // findHero(id1)
+    //     .then( hero => {
+    //         hero1 = hero;
+    //         return findHero(id2);
+    //     }).then( hero2 => {
+    //         renderTwoHeros(hero1, hero2);
+    //     })
+    //     .catch( renderError );
+
+    //=====================================================
+    // promise hell Forma 1
+    // findHero(id1)
+    //     .then( superHero => renderHero(superHero));
+    //     .then( (hero1) => { 
+    //         findHero(id2)
+    //             .then( hero2 => {
+    //                 renderTwoHeros(hero1, hero2)
+    //             })
+    //             .catch( renderError );
+    //     })
+    //     .catch( renderError );
 }
 
 
