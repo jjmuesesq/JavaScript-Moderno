@@ -8,9 +8,13 @@ import { heroes } from '../data/heroes';
 export const asyncComponent = (element) => {
     const id1 = '5d86371f2343e37870b91ef1';
     // console.log(findHero( id1 ));
-    findHero( id1 )
-        .then((name) => element.innerHTML = name )
+    console.log('Inicio de componente');
+    findHero( id1 ) //funcion asyncrona no sigue el hilo principal
+        .then(name => element.innerHTML = name )
+        // .then(console.log )
         .catch(error => element.innerHTML = error )
+
+    console.log('Fin del componente');
 }
 
 
@@ -21,6 +25,8 @@ export const asyncComponent = (element) => {
  */
 const findHero = async( id ) => { // retorna en ves de un objeto una promesa - transforma la funcion
     const hero = heroes.find( hero => hero.id === id );
+    if( !hero )
+        throw `Hero with id ${ id } not found`;
     return hero.name;
 }
 
