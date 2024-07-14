@@ -1,5 +1,7 @@
 // nadie pueda manipular el store
 
+import { loadUsersByPage } from "../use-cases/load-users-by-page";
+
 const state = {
     currentPage: 0,
     users: [],
@@ -7,7 +9,7 @@ const state = {
 
 // cargar la siguiente pagina
 const loadNextPage = async() => {
-    throw new Error('No implementado');
+    await loadUsersByPage( state.currentPage + 1 );
 }
 
 // cargar la pagina previa
