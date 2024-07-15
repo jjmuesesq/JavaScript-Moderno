@@ -1,13 +1,19 @@
+import { localhostUserToModel } from '../mappers/localhost-user.mapper';
+import { User } from '../models/user';
+
 /**
  * 
  * @param {Number} page
- * @returns 
+ * @returns {Promise<User[]>}
  */
+
 
 export const loadUsersByPage = async( page = 1 ) => {
     const url = `${ import.meta.env.VITE_BASE_URL }/users?_page=${ page }`;
     const res = await fetch(url);
     const data = await res.json();
-
-    console.log(data);
+    // const users = data.map( userLike => localhostUserToModel(userLike)); // caso donde el primer argumento su razon de existir es ser enviado como argumento
+    const users = data.map(localhostUserToModel);
+    // console.log(users); // [user, user, ...]
+    return users;
 }
