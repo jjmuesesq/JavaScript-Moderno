@@ -9,7 +9,10 @@ const state = {
 
 // cargar la siguiente pagina
 const loadNextPage = async() => {
-    await loadUsersByPage( state.currentPage + 1 );
+    const users = await loadUsersByPage( state.currentPage + 1 );
+    if(users.length === 0 ) return;
+    state.currentPage += 1;
+    state.users =  users;
 }
 
 // cargar la pagina previa
@@ -34,6 +37,6 @@ export default {
     reloadPage,
 
     //acceso por fuera del store a la pagina actual y usuarios
-    getUser: () => [...state.users],// objetos pasan por referencia
+    getUsers: () => [...state.users],// objetos pasan por referencia
     getCurrentPage: () => state.currentPage, // primitivos pasan por valor
 }
