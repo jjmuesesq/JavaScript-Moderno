@@ -37,6 +37,15 @@ export default {
     reloadPage,
 
     //acceso por fuera del store a la pagina actual y usuarios
+    /**
+     * 
+     * @returns {User[]}
+     */
     getUsers: () => [...state.users],// objetos pasan por referencia
+
+    /**
+     * 
+     * @returns {Number}
+     */
     getCurrentPage: () => state.currentPage, // primitivos pasan por valor
 }
