@@ -17,7 +17,10 @@ const loadNextPage = async() => {
 
 // cargar la pagina previa
 const loadPreviousPage = async() => {
-    throw new Error('No implementado');
+    if(state.currentPage ===1 ) return;
+    const users = await loadUsersByPage( state.currentPage - 1 );
+    state.users =  users;
+    state.currentPage -= 1; //actualizo el state
 }
 
 // informacion cuando un usuario cambia
