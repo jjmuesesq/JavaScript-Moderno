@@ -9,7 +9,7 @@ export const showModal = () => {
 
 export const hideModal = () => {
     modal?.classList.add('hide-modal');
-    //TODO reset del formulario
+    form?.reset();
 }
 
 /**
@@ -37,7 +37,29 @@ export const renderModal = (element) => {
         //prevenir el comportamiento por defecto
 
         event.preventDefault();
-        console.log('Formulario enviado');
+        // console.log('Formulario enviado');
+        const formData = new FormData( form );
+        const userLike = {};
+
+        for (const [key, value] of formData) {
+            if(key === 'balance'){
+                userLike[key] = +value; //conversion en balance a numerico
+                continue;
+            }
+
+            if(key === 'isActive'){
+                userLike[key] = (value === 'on') ? true : false; //conversion isActive a booleano
+                continue;
+            }
+
+            userLike[key] = value;
+
+        }
+
+        // console.log(userLike);
+        //TODO guardar usuario
+        hideModal();
+
     });
 
     element.append(modal);
