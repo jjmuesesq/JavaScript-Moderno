@@ -15,11 +15,13 @@ export const hideModal = () => {
 /**
  * 
  * @param {HTMLDivElement} element 
- * @returns 
+ * @param {(userLike)=> Promise<void>} callback 
  */
 
-export const renderModal = (element) => {
+export const renderModal = (element, callback) => {
+
     if(modal) return;
+
     modal = document.createElement('div');
     modal.innerHTML = modalHtml;
     modal.className = 'modal-container hide-modal';
@@ -32,7 +34,7 @@ export const renderModal = (element) => {
         }
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async(event) => {
         // console.log(event); evitar la propagacion del formulario en el submit
         //prevenir el comportamiento por defecto
 
@@ -42,12 +44,12 @@ export const renderModal = (element) => {
         const userLike = {};
 
         for (const [key, value] of formData) {
-            if(key === 'balance'){
+            if( key === 'balance' ){
                 userLike[key] = +value; //conversion en balance a numerico
                 continue;
             }
 
-            if(key === 'isActive'){
+            if( key === 'isActive' ){
                 userLike[key] = (value === 'on') ? true : false; //conversion isActive a booleano
                 continue;
             }
@@ -57,7 +59,7 @@ export const renderModal = (element) => {
         }
 
         // console.log(userLike);
-        //TODO guardar usuario
+        await callback(userLike);
         hideModal();
 
     });
