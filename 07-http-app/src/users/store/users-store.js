@@ -24,8 +24,24 @@ const loadPreviousPage = async() => {
 }
 
 // informacion cuando un usuario cambia
-const onUserChanged = async() => {
-    throw new Error('No implementado');
+/**
+ * 
+ * @param {User} updatedUser 
+ */
+const onUserChanged = async( updatedUser ) => {
+    //actualizar objeto de usuarios en nuestro estado
+    let wasFound = false;
+    state.users = state.users.map( user => {
+        if (user.id === updatedUser.id ) {
+            wasFound = true;
+            return updatedUser;
+        }
+        return user;
+    });
+
+    if ( state.users.length < 10 && !wasFound ) {
+        state.users.push( updatedUser );
+    }
 }
 
 // recargar la pagina actual
