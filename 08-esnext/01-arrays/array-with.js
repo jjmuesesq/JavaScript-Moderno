@@ -1,4 +1,4 @@
-const superHeroes = [
+const state = [
     {
         id: 1,
         name: 'Batman'
@@ -17,17 +17,26 @@ const superHeroes = [
     },
 ];
 
-// const superHeroesCopy = [...superHeroes];
+const index = 1;
+const newName = 'Green Lanten';
 
-// tambien es valido
-const array2 = JSON.parse(JSON.stringify(superHeroes));
-const superHeroesCopy = structuredClone(superHeroes);
+// state[0].name = 'Volcan Negro';
 
+// const newState = state.map( (hero, i) => {
+//     if(i === index){
+//         hero.name = newName;
+//     }
+//     return {...hero};
+// });
 
-//objetos pasados por referencia
-//si se pasan primitivos funciona bien la copia
-superHeroesCopy[0].name = 'Green Lantern'; 
-array2[0].name = 'Green'; 
-console.table( superHeroes );
-console.table( superHeroesCopy );
-console.table(array2);
+// metodo With
+
+const newState = state.with( index, {
+    ...state.at(index),
+    name: newName
+}); 
+
+state[0].name = 'Volcan Negro';
+
+console.table(newState); //casi nueva emision del nuevo estado
+console.log('El ultimo: ', state.at(-1));
